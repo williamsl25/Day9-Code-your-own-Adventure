@@ -7,11 +7,9 @@
  */
 
 var sum = function(a, b) {
-    "use strict";
-    /// return ...
+    return a + b
 }
-
-console.log(sum(8, 11));
+console.log(sum(8, 11));  //executes the function
 
 /**
  * PART 2
@@ -37,18 +35,21 @@ var mark = {
 };
 
 var getAverageTime = function(person) {
-    "use strict";
-    // ... return ...
+    var sum = 0;
+    var lengthOfObject = 0
+    for(var key in person){
+      sum += person[key];
+      lengthOfObject++
+    }
+    return sum/lengthOfObject;
 }
-
 console.log(getAverageTime(matt));
 console.log(getAverageTime(mark));
 
+// lengthOfObject++ means that it will loop over each finishing time and keep track of how many times so that you can divide the sum to get the avg
 
 /**
  * PART 3
- *
- *
  * Modify the following to calculate the difference between the two accounts.
  */
 
@@ -74,12 +75,17 @@ function addToBank(account, savings, retirement, checking) {
     account.retirement = account.retirement + retirement;
     account.checking = account.checking + checking;
 }
-
+//******** My Solution *******
 function getSumOfAccounts(account) {
     "use strict";
-    // return ...
+    var accountSum = 0;
+    var ObjkeysArray = Object.keys(account);
+    for(var i=0; i < Object.keys(account).length; i++){
+      accountSum = (accountSum + account[ObjkeysArray[i]]);
+    }
+    return accountSum;
 }
-
+//****************************
 addToBank(MattsBankAccount, 100, 10, 1);
 addToBank(RobertosBankAccount, 200, 50, 19);
 

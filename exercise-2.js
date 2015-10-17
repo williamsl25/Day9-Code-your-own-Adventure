@@ -9,6 +9,8 @@ function doSomethingCool() {
 }
 
 // Put your answer below -------------------------
+
+// variable containing an anonymous function
 var doSomethingCool = function() {
   console.log("Something Cool!");
 };
@@ -27,10 +29,11 @@ var doSomethingCool = function() {
 function sayHi() {
   alert("Hello, World!");
 }
-
 setTimeout(sayHi, 2000);
 
 // Put your answer below -------------------------
+
+// using an anonymous function that will send out the alert after 2 seconds
 setTimeout(function() {
   alert("Hello, World!");
 }, 2000);
@@ -63,8 +66,22 @@ console.log("The letter is", letter);
 
 // Put your answer below -------------------------
 [c] z then y
-// x is a global variable and is accessible anywhere once it is declared.
-// letter y overrides the global variable but is a parameter
+//  1) var letter = "x" is a global variable meaning you can read and change them anywhere in your code. The value is accessible and modifiable throughout your program.
+
+//  2) Any code inside that function can access (read and change) this variable. Any code outside it can't. It's local, so it's invisible from outside.
+
+//      var g = 100;
+
+//      function outer() {
+//          var x = 99;
+
+//          function inner() {
+//              var y = 77;
+//          }
+//      }
+//  the code inside the inner function has access to all three variables. The code inside outer can only access g and x, and the code outside of the outer function can only see g.
+
+// Put in terms of scope, g is global, x is local to outer (or, equivalently, the scope of x is the outer function), and y is local to inner (i.e. its scope is inner).
 
 // -----------------------------------------------
 
@@ -90,6 +107,11 @@ var reverseStr = function(str) {
   return str.split("").reverse().join("");
 };
 
+// var reverseStr = function(str) {
+//   return str.split("").reverse();
+// };
+// reverseStr("lindsay") => will return
+//       ["y", "a", "s", "d", "n", "i", "l"]
 // -----------------------------------------------
 
 //////////////////////////////////////////////////
@@ -123,6 +145,18 @@ var spanishColor = function(colorName) {
 
 // Put your answer below -------------------------
 
+var spanishColor = {
+    'rojo': '#ff0000',
+    'blanco': '#ffffff',
+    'azul': '#0000ff',
+    'verde': '#00ff00',
+    'negro': '#000000'
+  };
+  function colorName(hex){
+    return spanishColor[hex];
+};
+console.log(spanishColor);
+ // returns the object => Object {rojo: "#ff0000", blanco: "#ffffff", azul: "#0000ff", verde: "#00ff00", negro: "#000000"}
 
 // -----------------------------------------------
 
