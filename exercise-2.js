@@ -175,7 +175,7 @@ var foo = "bar";
 // Put your answer below -------------------------
 
 var foo;  // declaration
-foo = "bar"; // assignment
+foo = "bar"; // = sign indicates an assignment
 
 // -----------------------------------------------
 
@@ -235,15 +235,14 @@ var decreaseScore = function() {
 };
 
 // Put your answer below -------------------------
-
-var increaseScore = function() {
-  var score = 0;
-   score++;
-};
-
-var decreaseScore = function() {
-  var score = 0;
-  score--;
+var score = function(){
+  var scoreSum = 0;
+  var increaseScore = function() {
+    scoreSum++;
+  }
+  var decreaseScore = function() {
+    scoreSum--;
+  }
 };
 
 // -----------------------------------------------
@@ -260,7 +259,6 @@ var decreaseScore = function() {
 var addNumbers = function(numberA, numberB) {
   console.log(numberA + numberB);
 };
-
 var twoPlusTwo = addNumbers(2,2);
 
 // Put your answer below -------------------------
@@ -268,6 +266,7 @@ var addNumbers = function(numberA, numberB) {
   return numberA + numberB;
 };
 var twoPlusTwo = addNumbers(2,2);
+// twoPlusTwo will return 4
 
 // -----------------------------------------------
 
@@ -302,13 +301,10 @@ var accelerate = function(amount) {
     speed += amount;
   }
 };
-accelerate();
-
-// It is returning NaN  because the ammount is undefined - when you add
-// speed + amount (undefined + 0) it will return NaN
+console.log(accelerate());
 
 
-
+// It is returning NaN  because the ammount is undefined - when you add speed + amount (undefined + 0) it will return NaN
 
 // -----------------------------------------------
 
@@ -356,7 +352,6 @@ callLater(function(){
     });
 
 // -----------------------------------------------
-
 
 
 
@@ -435,25 +430,33 @@ function sum(){
     "use strict";
     //...
 }
-var sum = [1, 2, 3, 4].reduce(add, 0);
-
-function add(a, b) {
-    return a + b;
-}
-
-console.log(sum); // 10
+function sum(){
+  var args= [].slice.call(arguments); //=> turns args into an array
+  var total=0;
+  for (var i=0; i<args.length; i++){
+    total = total + args[i];
+    console.log(total);
+  }
+  return total;
+};
+ sum(1,2,3,4) //=> returns what it is doing each time it loops (1 3 6 10) and your total =10
 
 
 function multiply(){
     "use strict";
     //...
 }
-var multiply = [1, 2, 3, 4].reduce(multiply);
 
-function multiply(a, b) {
-    return a * b;
+function multiply () {
+  var args= [].slice.call(arguments);
+  var total=1;
+  for (var i=0; i<args.length; i++) {
+    total = total * args[i];
+    console.log(total);
+  }
+  return total;
 }
-console.log(multiply); // 24
+multiply(1,2,3,4);  //24
 
 // ---------------------
 // Define a function reverse() that computes the reversal of a string. For example, reverse("jag testar") should return the string "ratset gaj".
@@ -497,6 +500,7 @@ function filterLongWords(words, i){
     "use strict";
     //...
 }
+
 
 // ---------------------
 // Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
